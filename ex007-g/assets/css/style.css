@@ -9,29 +9,31 @@ body{
     padding: 0.625em;
 }
 
-header,
-main,
-footer{
-    max-width: 150em;  /* mesma largura para os três, garante alinhamento */
-    margin: 0 auto;     
-    /* centraliza os três na página */
-}
-
-main section{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;      
+main section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2em;
+    grid-auto-rows: 1fr;
     align-items: stretch;
     
 }
 
-main section img,
-main section video{
-    flex: 1 1 18.75em;    /* mesmo peso pros dois = mesmo tamanho */
-    min-width: 0;
-    height: 18.75em;        /* mesma altura pros dois */
-    object-fit: cover;    /* evita distorcer a imagem/vídeo */
+main section video:nth-of-type(2){
+    order: 1;
 }
+main section p:nth-of-type(2){
+    order: 0;
+}
+
+video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+p{
+    width: 100%;
+    
+}
+
 
