@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>ERP - Protótipo</title>
+</head>
+
+<body>
+
+    <!-- ===== PÁGINA INICIAL (DASHBOARD) ===== -->
+    <div class="dashboard">
+
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li class="menu-item ativo">
+                        <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10" /></svg>
+                        <span>Dashboard</span>
+                    </li>
+                    <li class="menu-item">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 4-7 8-7s8 3 8 7" /></svg>
+                        <span>Clientes</span>
+                    </li>
+                    <li class="menu-item">
+                        <svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1" /><path d="M8 7h8M8 11h8M8 15h5" /></svg>
+                        <span>Produtos</span>
+                    </li>
+                    <li class="menu-item">
+                        <svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z" /><path d="M14 3v4h4" /></svg>
+                        <span>Relatórios</span>
+                    </li>
+                    <li class="menu-item">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" /><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.3.9a7 7 0 0 0-2-1.2L14 3h-4l-.6 2.5a7 7 0 0 0-2 1.2l-2.3-.9-2 3.4 2 1.6A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.6 2 3.4 2.3-.9c.6.5 1.3.9 2 1.2L10 21h4l.6-2.5c.7-.3 1.4-.7 2-1.2l2.3.9 2-3.4-2-1.6c.1-.4.1-.8.1-1.2z" /></svg>
+                        <span>Configurações</span>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <header class="topbar">
+            <h1>Página Inicial</h1>
+            <button class="btn-logout">Logout</button>
+        </header>
+
+        <main class="conteudo">
+
+            <section class="cards">
+                <div class="card">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 4-7 8-7s8 3 8 7" /></svg>
+                    <p class="card-label">Total de clientes</p>
+                    <p class="card-valor">150</p>
+                </div>
+                <div class="card">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l9 5-9 5-9-5 9-5z" /><path d="M3 7v10l9 5 9-5V7" /></svg>
+                    <p class="card-label">Produtos em estoque</p>
+                    <p class="card-valor">75</p>
+                </div>
+                <div class="card">
+                    <svg viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7z" /><path d="M9 8V6a3 3 0 0 1 6 0v2" /></svg>
+                    <p class="card-label">Vendas do mês</p>
+                    <p class="card-valor">200</p>
+                </div>
+            </section>
+
+            <section class="grafico">
+                <h2>Vendas por mês</h2>
+                <div class="grafico-area">
+                    <div class="eixo-y">
+                        <span>100</span><span>80</span><span>60</span><span>40</span><span>20</span><span>0</span>
+                    </div>
+                    <div class="barras">
+                        <div class="barra-grupo"><div class="barra" style="--altura: 38%;"></div><span>Jan</span></div>
+                        <div class="barra-grupo"><div class="barra" style="--altura: 47%;"></div><span>Fev</span></div>
+                        <div class="barra-grupo"><div class="barra" style="--altura: 58%;"></div><span>Mar</span></div>
+                        <div class="barra-grupo"><div class="barra" style="--altura: 44%;"></div><span>Abr</span></div>
+                        <div class="barra-grupo"><div class="barra" style="--altura: 65%;"></div><span>Mai</span></div>
+                        <div class="barra-grupo"><div class="barra" style="--altura: 58%;"></div><span>Jun</span></div>
+                        <div class="barra-grupo"><div class="barra" style="--altura: 80%;"></div><span>Jul</span></div>
+                        <div class="barra-grupo"><div class="barra" style="--altura: 65%;"></div><span>Ago</span></div>
+                        <div class="barra-grupo"><div class="barra" style="--altura: 84%;"></div><span>Set</span></div>
+                        <div class="barra-grupo"><div class="barra" style="--altura: 95%;"></div><span>Dez</span></div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- ===== PÁGINA DE CADASTRO DE CLIENTE ===== -->
+    <div class="pagina-cadastro">
+        <section class="form-card">
+            <h1>Cadastro de Cliente</h1>
+
+            <form>
+                <div class="campo campo-full">
+                    <label for="nome">Nome do Cliente</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite o nome completo">
+                </div>
+
+                <div class="linha-campos">
+                    <div class="campo">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="exemplo@email.com">
+                    </div>
+                    <div class="campo">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+                    </div>
+                </div>
+
+                <div class="campo campo-full">
+                    <label for="endereco">Endereço</label>
+                    <textarea id="endereco" name="endereco" rows="4" placeholder="Rua, número, bairro, cidade"></textarea>
+                </div>
+
+                <div class="botoes">
+                    <button type="submit" class="btn-salvar">Salvar</button>
+                    <button type="button" class="btn-cancelar">Cancelar</button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+</body>
+
+</html>
