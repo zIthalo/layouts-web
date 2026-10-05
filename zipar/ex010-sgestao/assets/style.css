@@ -1,0 +1,361 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+body{
+    background-color: #f5f6f8;
+    color: #1f2328;
+}
+
+svg{
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ======================================================
+   DASHBOARD — layout geral em GRID
+   ====================================================== */
+
+.dashboard{
+    display: grid;
+    grid-template-columns: 250px 1fr;   /* menu lateral fixo + área principal */
+    grid-template-rows: 90px auto;       /* topbar + conteúdo */
+    grid-template-areas:
+        "sidebar topbar"
+        "sidebar conteudo";
+    max-width: 1100px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    border: 1px solid #e4e6ea;
+    border-radius: 12px;
+    overflow: hidden;
+    animation: fade-in 0.6s ease both; /* keyframe: fade-in ao carregar a página */
+}
+
+/* ----- Menu lateral ----- */
+
+.sidebar{
+    grid-area: sidebar;
+    background-color: #f7f8fa;
+    border-right: 1px solid #e4e6ea;
+    padding: 30px 16px;
+}
+
+.menu-item{
+    display: flex;           /* flexbox para alinhar ícone + texto */
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    color: #3a3f47;
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.menu-item:hover{
+    background-color: #757273;
+    color: #ffffff;
+    transform: scale(1.04) translateX(4px); /* efeito de hover: muda cor e tamanho suavemente */
+}
+
+.menu-item.ativo{
+    color: #3a3f47;
+    font-weight: 600;
+}
+
+/* ----- Topbar ----- */
+
+.topbar{
+    grid-area: topbar;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    border-bottom: 1px solid #e4e6ea;
+}
+
+.topbar h1{
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+.btn-logout{
+    border: 1px solid #d7dae0;
+    background-color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.btn-logout:hover{
+    background-color: #f5f6f8;
+    border-color: #b9bdc6;
+}
+
+/* ----- Conteúdo central ----- */
+
+.conteudo{
+    grid-area: conteudo;
+    padding: 36px 40px;
+}
+
+.cards{
+    display: flex;             /* flexbox para os 3 cards lado a lado */
+    gap: 24px;
+    margin-bottom: 44px;
+}
+
+.card{
+    flex: 1;
+    display: flex;              /* flexbox dentro do card: alinha ícone e textos */
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 30px 20px;
+    border: 1px solid #e4e6ea;
+    border-radius: 10px;
+    text-align: center;
+    animation: destaque 2.5s ease-in-out infinite; /* keyframe: destaque suave nos cards */
+    animation-delay: calc(var(--ordem, 0) * 0.3s);
+}
+
+.card:nth-child(1){ --ordem: 0; }
+.card:nth-child(2){ --ordem: 1; }
+.card:nth-child(3){ --ordem: 2; }
+
+.card svg{
+    width: 34px;
+    height: 34px;
+    color: #3a3f47;
+}
+
+.card-label{
+    color: #6a6f78;
+    font-size: 0.95em;
+}
+
+.card-valor{
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+/* ----- Gráfico de barras ----- */
+
+.grafico h2{
+    font-size: 1.3em;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.grafico-area{
+    display: flex;
+    gap: 16px;
+}
+
+.eixo-y{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    font-size: 0.8em;
+    color: #9a9fa8;
+    padding-bottom: 24px; /* alinha com a base das barras (espaço dos labels) */
+}
+
+.barras{
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+    height: 220px;
+    border-left: 1px solid #e4e6ea;
+    border-bottom: 1px solid #e4e6ea;
+    padding-left: 10px;
+}
+
+.barra-grupo{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.barra{
+    width: 60%;
+    height: var(--altura);
+    background-color: #2f7ff0;
+    border-radius: 3px 3px 0 0;
+}
+
+.barra-grupo span{
+    font-size: 0.8em;
+    color: #6a6f78;
+}
+
+/* ======================================================
+   PÁGINA DE CADASTRO DE CLIENTE
+   ====================================================== */
+
+.pagina-cadastro{
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    padding: 0 0 40px;
+}
+
+.form-card{
+    background-color: #ffffff;
+    border: 1px solid #e4e6ea;
+    border-radius: 12px;
+    padding: 40px 44px;
+    animation: fade-in 0.6s ease both;
+}
+
+.form-card h1{
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: 32px;
+}
+
+.linha-campos{
+    display: flex;        /* flexbox para campos lado a lado em telas maiores */
+    gap: 24px;
+}
+
+.campo{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.campo-full{
+    width: 100%;
+}
+
+.campo label{
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+.campo input,
+.campo textarea{
+    border: 1px solid #d7dae0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.95em;
+    color: #1f2328;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.campo input:focus,
+.campo textarea:focus{
+    border-color: #e6177e;
+}
+
+.campo textarea{
+    resize: vertical;
+}
+
+.botoes{
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+    justify-content: flex-end;
+}
+
+.btn-salvar,
+.btn-cancelar{
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-salvar{
+    background-color: #ffffff;
+    color: #3a3f47;
+    border: 1px solid #d7dae0;
+    transition: background-color 0.3s ease; /* transição pedida no botão Salvar */
+}
+
+.btn-salvar:hover{
+    background-color: #00fd2a;
+}
+
+.btn-cancelar{
+    background-color: #ffffff;
+    color: #3a3f47;
+    border: 1px solid #d7dae0;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-cancelar:hover{
+    background-color: #f5f6f8;
+    border-color: #b9bdc6;
+}
+
+/* ======================================================
+   ANIMAÇÕES (keyframes)
+   ====================================================== */
+
+@keyframes fade-in{
+    from{
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes destaque{
+    0%, 100%{
+        box-shadow: 0 0 0 rgba(230, 23, 126, 0);
+    }
+    50%{
+        box-shadow: 0 0 0 4px rgba(230, 23, 126, 0.08);
+    }
+}
+
+/* ======================================================
+   RESPONSIVO (telas menores)
+   ====================================================== */
+
+@media (max-width: 700px){
+    .dashboard{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "topbar"
+            "sidebar"
+            "conteudo";
+    }
+
+    .cards{
+        flex-direction: column;
+    }
+
+    .linha-campos{
+        flex-direction: column;
+        gap: 0;
+    }
+}
